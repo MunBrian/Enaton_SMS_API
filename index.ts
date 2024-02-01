@@ -1,5 +1,6 @@
 import express, { Express, Request, Response } from "express";
 import connection from "./db/connection";
+import errorHandler from "./middleware/errorHandler";
 
 const app: Express = express();
 
@@ -10,6 +11,8 @@ app.get("/", (req: Request, res: Response) => {
 app.get("/hello", (req: Request, res: Response) => {
   res.send("Hello there with nodemon");
 });
+
+app.use(errorHandler);
 
 const start = async (): Promise<void> => {
   try {
