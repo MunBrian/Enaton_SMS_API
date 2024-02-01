@@ -1,14 +1,14 @@
+import "dotenv/config";
 import { Sequelize } from "sequelize-typescript";
 
-import { VoteHead } from "./models/voteHead";
-import { Stream } from "./models/stream";
-import { FinancialYear } from "./models/financialYear";
-import { FeeCategory } from "./models/feeCategory";
-import { SchoolClass } from "./models/schoolClass";
-import { FeeStructure } from "./models/feeStructure";
-import { Term } from "./models/term";
-import { Student } from "./models/student";
-import "dotenv/config";
+import { VoteHead } from "../models/voteHead";
+import { Stream } from "../models/stream";
+import { FinancialYear } from "../models/financialYear";
+import { FeeCategory } from "../models/feeCategory";
+import { SchoolClass } from "../models/schoolClass";
+import { FeeStructure } from "../models/feeStructure";
+import { Term } from "../models/term";
+import { Student } from "../models/student";
 
 const connection = new Sequelize({
   dialect: "postgres",

@@ -1,5 +1,5 @@
 import express, { Express, Request, Response } from "express";
-import connection from "./connection";
+import connection from "./db/connection";
 
 const app: Express = express();
 
