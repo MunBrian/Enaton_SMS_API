@@ -32,6 +32,7 @@ export class Stream extends Model {
 
   @Column({
     type: DataType.INTEGER,
+    defaultValue: 0,
     allowNull: false,
   })
   population!: number;
