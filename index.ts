@@ -1,16 +1,22 @@
-import express, { Express, Request, Response } from "express";
+import express, { Express } from "express";
 import connection from "./db/connection";
 import errorHandler from "./middleware/errorHandler";
+import createVoteHead from "./controllers/voteHead.controller";
+import createFeeCategory from "./controllers/feeCategory.controller";
+import createFinancialYear from "./controllers/financialYear.controller";
+import createClass from "./controllers/schoolClass.controller";
 
 const app: Express = express();
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello from express using tsx");
-});
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-app.get("/hello", (req: Request, res: Response) => {
-  res.send("Hello there with nodemon");
-});
+app.post("/createVoteHead", createVoteHead);
+app.post("/createFinancialYear", createFinancialYear);
+app.post("/createFeeCategory", createFeeCategory);
+app.post("/createClass", createClass);
+// app.post("/createStudent", createStudent)
+// app.post("/createGrade", createGrade)
 
 app.use(errorHandler);
 

@@ -13,14 +13,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const connection_1 = __importDefault(require("./connection"));
+const connection_1 = __importDefault(require("./db/connection"));
+const errorHandler_1 = __importDefault(require("./middleware/errorHandler"));
+const voteHead_controller_1 = __importDefault(require("./controllers/voteHead.controller"));
+const feeCategory_controller_1 = __importDefault(require("./controllers/feeCategory.controller"));
+const financialYear_controller_1 = __importDefault(require("./controllers/financialYear.controller"));
+const schoolClass_controller_1 = __importDefault(require("./controllers/schoolClass.controller"));
 const app = (0, express_1.default)();
-app.get("/", (req, res) => {
-    res.send("Hello from express using tsx");
-});
-app.get("/hello", (req, res) => {
-    res.send("Hello there with nodemon");
-});
+app.use(express_1.default.json());
+app.use(express_1.default.urlencoded({ extended: false }));
+app.post("/createVoteHead", voteHead_controller_1.default);
+app.post("/createFinancialYear", financialYear_controller_1.default);
+app.post("/createFeeCategory", feeCategory_controller_1.default);
+app.post("/createClass", schoolClass_controller_1.default);
+// app.post("/createStudent", createStudent)
+// app.post("/createGrade", createGrade)
+app.use(errorHandler_1.default);
 const start = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield connection_1.default.sync();
