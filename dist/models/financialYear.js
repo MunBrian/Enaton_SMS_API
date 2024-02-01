@@ -17,6 +17,13 @@ let FinancialYear = class FinancialYear extends sequelize_typescript_1.Model {
 exports.FinancialYear = FinancialYear;
 __decorate([
     (0, sequelize_typescript_1.Column)({
+        type: sequelize_typescript_1.DataType.STRING,
+        allowNull: false,
+    }),
+    __metadata("design:type", String)
+], FinancialYear.prototype, "name", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.DATEONLY,
         allowNull: false,
     }),

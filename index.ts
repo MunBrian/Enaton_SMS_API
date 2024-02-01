@@ -5,6 +5,7 @@ import createVoteHead from "./controllers/voteHead.controller";
 import createFeeCategory from "./controllers/feeCategory.controller";
 import createFinancialYear from "./controllers/financialYear.controller";
 import createClass from "./controllers/schoolClass.controller";
+import createTerm from "./controllers/term.controller";
 
 const app: Express = express();
 
@@ -15,6 +16,7 @@ app.post("/createVoteHead", createVoteHead);
 app.post("/createFinancialYear", createFinancialYear);
 app.post("/createFeeCategory", createFeeCategory);
 app.post("/createClass", createClass);
+app.post("/createTerm", createTerm);
 // app.post("/createStudent", createStudent)
 // app.post("/createGrade", createGrade)
 

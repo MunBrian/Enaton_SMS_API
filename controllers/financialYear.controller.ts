@@ -8,10 +8,10 @@ const createFinancialYear = asyncHandler(async (req, res) => {
     throw new Error("Please fill in all the fields");
   }
   //get values from body
-  const { start_date, end_date } = req.body;
+  const { name, start_date, end_date } = req.body;
 
   //check if required properties exists
-  if (!start_date || !end_date) {
+  if (!name || !start_date || !end_date) {
     res.status(400);
     throw new Error("Please fill in all the fields");
   }

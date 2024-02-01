@@ -8,7 +8,7 @@ const createFeeCategory = asyncHandler(async (req, res) => {
     throw new Error("Please fill in all the fields");
   }
   //get value from body
-  const { name } = req.body;
+  const { name }: { name?: string } = req.body;
 
   //check if required property exists
   if (!name) {
