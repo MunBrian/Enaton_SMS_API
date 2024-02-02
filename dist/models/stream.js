@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Stream = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
 const schoolClass_1 = require("./schoolClass");
-const feeStructure_1 = require("./feeStructure");
 const student_1 = require("./student");
 let Stream = class Stream extends sequelize_typescript_1.Model {
 };
@@ -43,10 +42,6 @@ __decorate([
     (0, sequelize_typescript_1.BelongsTo)(() => schoolClass_1.SchoolClass),
     __metadata("design:type", schoolClass_1.SchoolClass)
 ], Stream.prototype, "class", void 0);
-__decorate([
-    (0, sequelize_typescript_1.HasMany)(() => feeStructure_1.FeeStructure),
-    __metadata("design:type", Array)
-], Stream.prototype, "feeStructures", void 0);
 __decorate([
     (0, sequelize_typescript_1.HasMany)(() => student_1.Student),
     __metadata("design:type", Array)

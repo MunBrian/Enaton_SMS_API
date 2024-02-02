@@ -10,7 +10,6 @@ import {
 import { SchoolClass } from "./schoolClass";
 import { FeeCategory } from "./feeCategory";
 import { VoteHead } from "./voteHead";
-import { Stream } from "./stream";
 import { Term } from "./term";
 
 @Table({
@@ -58,15 +57,6 @@ export class FeeStructure extends Model {
 
   @BelongsTo(() => VoteHead)
   voteHead!: VoteHead;
-
-  @ForeignKey(() => Stream)
-  @Column({
-    allowNull: false,
-  })
-  streamId!: number;
-
-  @BelongsTo(() => Stream)
-  stream!: Stream;
 
   @ForeignKey(() => Term)
   @Column({

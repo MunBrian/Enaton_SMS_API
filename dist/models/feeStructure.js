@@ -14,7 +14,6 @@ const sequelize_typescript_1 = require("sequelize-typescript");
 const schoolClass_1 = require("./schoolClass");
 const feeCategory_1 = require("./feeCategory");
 const voteHead_1 = require("./voteHead");
-const stream_1 = require("./stream");
 const term_1 = require("./term");
 let FeeStructure = class FeeStructure extends sequelize_typescript_1.Model {
 };
@@ -59,17 +58,6 @@ __decorate([
     (0, sequelize_typescript_1.BelongsTo)(() => voteHead_1.VoteHead),
     __metadata("design:type", voteHead_1.VoteHead)
 ], FeeStructure.prototype, "voteHead", void 0);
-__decorate([
-    (0, sequelize_typescript_1.ForeignKey)(() => stream_1.Stream),
-    (0, sequelize_typescript_1.Column)({
-        allowNull: false,
-    }),
-    __metadata("design:type", Number)
-], FeeStructure.prototype, "streamId", void 0);
-__decorate([
-    (0, sequelize_typescript_1.BelongsTo)(() => stream_1.Stream),
-    __metadata("design:type", stream_1.Stream)
-], FeeStructure.prototype, "stream", void 0);
 __decorate([
     (0, sequelize_typescript_1.ForeignKey)(() => term_1.Term),
     (0, sequelize_typescript_1.Column)({

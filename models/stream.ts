@@ -6,10 +6,8 @@ import {
   ForeignKey,
   BelongsTo,
   HasMany,
-  HasOne,
 } from "sequelize-typescript";
 import { SchoolClass } from "./schoolClass";
-import { FeeStructure } from "./feeStructure";
 import { Student } from "./student";
 
 @Table({
@@ -46,9 +44,6 @@ export class Stream extends Model {
 
   @BelongsTo(() => SchoolClass)
   class!: SchoolClass;
-
-  @HasMany(() => FeeStructure)
-  feeStructures!: FeeStructure[];
 
   @HasMany(() => Student)
   students!: Student[];
