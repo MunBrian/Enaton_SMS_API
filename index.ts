@@ -9,6 +9,7 @@ import createTerm from "./controllers/term.controller";
 import createStream from "./controllers/stream.controller";
 import createStudent from "./controllers/student.controller";
 import createFeeStructure from "./controllers/feeStructure.controller";
+import billStudent from "./controllers/billing.controller";
 
 const app: Express = express();
 
@@ -23,6 +24,7 @@ app.post("/createTerm", createTerm);
 app.post("/createStream", createStream);
 app.post("/createStudent", createStudent);
 app.post("/createFeeStructure", createFeeStructure);
+app.post("/billStudent", billStudent);
 
 app.use(errorHandler);
 
