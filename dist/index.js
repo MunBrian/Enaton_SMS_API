@@ -22,6 +22,7 @@ const schoolClass_controller_1 = __importDefault(require("./controllers/schoolCl
 const term_controller_1 = __importDefault(require("./controllers/term.controller"));
 const stream_controller_1 = __importDefault(require("./controllers/stream.controller"));
 const student_controller_1 = __importDefault(require("./controllers/student.controller"));
+const feeStructure_controller_1 = __importDefault(require("./controllers/feeStructure.controller"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
@@ -32,7 +33,7 @@ app.post("/createClass", schoolClass_controller_1.default);
 app.post("/createTerm", term_controller_1.default);
 app.post("/createStream", stream_controller_1.default);
 app.post("/createStudent", student_controller_1.default);
-// app.post("/createGrade", createGrade)
+app.post("/createFeeStructure", feeStructure_controller_1.default);
 app.use(errorHandler_1.default);
 const start = () => __awaiter(void 0, void 0, void 0, function* () {
     try {

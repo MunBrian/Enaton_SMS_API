@@ -14,17 +14,9 @@ const createFeeStructure = asyncHandler(async (req: Request, res: Response) => {
     throw new Error("Please fill all required fields");
   }
 
-  const { school_class, stream, vote_head, term, fee_category, amount } =
-    req.body;
+  const { school_class, vote_head, term, fee_category, amount } = req.body;
 
-  if (
-    !school_class ||
-    !stream ||
-    !vote_head ||
-    !term ||
-    !fee_category ||
-    !amount
-  ) {
+  if (!school_class || !vote_head || !term || !fee_category || !amount) {
     res.status(400);
     throw new Error("Please fill all required fields");
   }
@@ -53,19 +45,6 @@ const createFeeStructure = asyncHandler(async (req: Request, res: Response) => {
   if (!feeCategory) {
     res.status(400);
     throw new Error("Fee category does not exist.");
-  }
-
-  //get stream
-  const schoolStream: Stream | null = await Stream.findOne({
-    where: {
-      name: stream,
-    },
-  });
-
-  //check if stream exists
-  if (!schoolStream) {
-    res.status(400);
-    throw new Error("Stream does not exist.");
   }
 
   //get voteHead
@@ -98,7 +77,6 @@ const createFeeStructure = asyncHandler(async (req: Request, res: Response) => {
   const feeStructure = await FeeStructure.create({
     ...req.body,
     feeCategoryId: feeCategory.id,
-    streamId: schoolStream.id,
     classId: schoolClass.id,
     term: schoolTerm.id,
     voteHeadId: voteHead.id,
@@ -108,3 +86,5 @@ const createFeeStructure = asyncHandler(async (req: Request, res: Response) => {
     feeStructure,
   });
 });
+
+export default createFeeStructure;

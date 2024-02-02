@@ -14,7 +14,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_async_handler_1 = __importDefault(require("express-async-handler"));
 const feeCategory_1 = require("../models/feeCategory");
-const stream_1 = require("../models/stream");
 const voteHead_1 = require("../models/voteHead");
 const term_1 = require("../models/term");
 const feeStructure_1 = require("../models/feeStructure");
@@ -25,13 +24,8 @@ const createFeeStructure = (0, express_async_handler_1.default)((req, res) => __
         res.status(400);
         throw new Error("Please fill all required fields");
     }
-    const { school_class, stream, vote_head, term, fee_category, amount } = req.body;
-    if (!school_class ||
-        !stream ||
-        !vote_head ||
-        !term ||
-        !fee_category ||
-        !amount) {
+    const { school_class, vote_head, term, fee_category, amount } = req.body;
+    if (!school_class || !vote_head || !term || !fee_category || !amount) {
         res.status(400);
         throw new Error("Please fill all required fields");
     }
@@ -57,17 +51,6 @@ const createFeeStructure = (0, express_async_handler_1.default)((req, res) => __
         res.status(400);
         throw new Error("Fee category does not exist.");
     }
-    //get stream
-    const schoolStream = yield stream_1.Stream.findOne({
-        where: {
-            name: stream,
-        },
-    });
-    //check if stream exists
-    if (!schoolStream) {
-        res.status(400);
-        throw new Error("Stream does not exist.");
-    }
     //get voteHead
     const voteHead = yield voteHead_1.VoteHead.findOne({
         where: {
@@ -91,8 +74,9 @@ const createFeeStructure = (0, express_async_handler_1.default)((req, res) => __
         throw new Error("Stream does not exist.");
     }
     //create student
-    const feeStructure = yield feeStructure_1.FeeStructure.create(Object.assign(Object.assign({}, req.body), { feeCategoryId: feeCategory.id, streamId: schoolStream.id, classId: schoolClass.id, term: schoolTerm.id, voteHeadId: voteHead.id }));
+    const feeStructure = yield feeStructure_1.FeeStructure.create(Object.assign(Object.assign({}, req.body), { feeCategoryId: feeCategory.id, classId: schoolClass.id, term: schoolTerm.id, voteHeadId: voteHead.id }));
     res.status(201).json({
         feeStructure,
     });
 }));
+exports.default = createFeeStructure;
