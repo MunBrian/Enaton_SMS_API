@@ -1,13 +1,4 @@
-import {
-  Table,
-  Model,
-  Column,
-  DataType,
-  ForeignKey,
-  BelongsTo,
-  HasMany,
-  HasOne,
-} from "sequelize-typescript";
+import { Table, Model, Column, DataType, HasMany } from "sequelize-typescript";
 import { Stream } from "./stream";
 import { FeeStructure } from "./feeStructure";
 

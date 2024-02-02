@@ -1,7 +1,6 @@
 import { Response, Request } from "express";
 import asyncHandler from "express-async-handler";
 import { FeeCategory } from "../models/feeCategory";
-import { Stream } from "../models/stream";
 import { VoteHead } from "../models/voteHead";
 import { Term } from "../models/term";
 import { FeeStructure } from "../models/feeStructure";
@@ -21,17 +20,19 @@ const createFeeStructure = asyncHandler(async (req: Request, res: Response) => {
     throw new Error("Please fill all required fields");
   }
 
+  console.log(fee_category);
+
   //get class
   const schoolClass = await SchoolClass.findOne({
     where: {
-      name: fee_category,
+      name: school_class,
     },
   });
 
   //check if class exists
   if (!schoolClass) {
     res.status(400);
-    throw new Error("Fee category does not exist.");
+    throw new Error("Class does not exist.");
   }
 
   //get fee_category
@@ -57,7 +58,7 @@ const createFeeStructure = asyncHandler(async (req: Request, res: Response) => {
   //check if voteHead exists
   if (!voteHead) {
     res.status(400);
-    throw new Error("Fee category does not exist.");
+    throw new Error("voteHead does not exist.");
   }
 
   //get term
@@ -70,7 +71,7 @@ const createFeeStructure = asyncHandler(async (req: Request, res: Response) => {
   //check if term exists
   if (!schoolTerm) {
     res.status(400);
-    throw new Error("Stream does not exist.");
+    throw new Error("Term does not exist.");
   }
 
   //create student
@@ -78,7 +79,7 @@ const createFeeStructure = asyncHandler(async (req: Request, res: Response) => {
     ...req.body,
     feeCategoryId: feeCategory.id,
     classId: schoolClass.id,
-    term: schoolTerm.id,
+    termId: schoolTerm.id,
     voteHeadId: voteHead.id,
   });
 

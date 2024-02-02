@@ -29,16 +29,17 @@ const createFeeStructure = (0, express_async_handler_1.default)((req, res) => __
         res.status(400);
         throw new Error("Please fill all required fields");
     }
+    console.log(fee_category);
     //get class
     const schoolClass = yield schoolClass_1.SchoolClass.findOne({
         where: {
-            name: fee_category,
+            name: school_class,
         },
     });
     //check if class exists
     if (!schoolClass) {
         res.status(400);
-        throw new Error("Fee category does not exist.");
+        throw new Error("Class does not exist.");
     }
     //get fee_category
     const feeCategory = yield feeCategory_1.FeeCategory.findOne({
@@ -60,7 +61,7 @@ const createFeeStructure = (0, express_async_handler_1.default)((req, res) => __
     //check if voteHead exists
     if (!voteHead) {
         res.status(400);
-        throw new Error("Fee category does not exist.");
+        throw new Error("voteHead does not exist.");
     }
     //get term
     const schoolTerm = yield term_1.Term.findOne({
@@ -71,10 +72,10 @@ const createFeeStructure = (0, express_async_handler_1.default)((req, res) => __
     //check if term exists
     if (!schoolTerm) {
         res.status(400);
-        throw new Error("Stream does not exist.");
+        throw new Error("Term does not exist.");
     }
     //create student
-    const feeStructure = yield feeStructure_1.FeeStructure.create(Object.assign(Object.assign({}, req.body), { feeCategoryId: feeCategory.id, classId: schoolClass.id, term: schoolTerm.id, voteHeadId: voteHead.id }));
+    const feeStructure = yield feeStructure_1.FeeStructure.create(Object.assign(Object.assign({}, req.body), { feeCategoryId: feeCategory.id, classId: schoolClass.id, termId: schoolTerm.id, voteHeadId: voteHead.id }));
     res.status(201).json({
         feeStructure,
     });
