@@ -13,6 +13,7 @@ exports.Student = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
 const feeCategory_1 = require("./feeCategory");
 const feeStructure_1 = require("./feeStructure");
+const stream_1 = require("./stream");
 let Student = class Student extends sequelize_typescript_1.Model {
 };
 exports.Student = Student;
@@ -34,6 +35,17 @@ __decorate([
     (0, sequelize_typescript_1.BelongsTo)(() => feeCategory_1.FeeCategory),
     __metadata("design:type", feeCategory_1.FeeCategory)
 ], Student.prototype, "feecategory", void 0);
+__decorate([
+    (0, sequelize_typescript_1.ForeignKey)(() => stream_1.Stream),
+    (0, sequelize_typescript_1.Column)({
+        allowNull: false,
+    }),
+    __metadata("design:type", Number)
+], Student.prototype, "streamId", void 0);
+__decorate([
+    (0, sequelize_typescript_1.BelongsTo)(() => stream_1.Stream),
+    __metadata("design:type", stream_1.Stream)
+], Student.prototype, "stream", void 0);
 __decorate([
     (0, sequelize_typescript_1.HasOne)(() => feeStructure_1.FeeStructure),
     __metadata("design:type", void 0)

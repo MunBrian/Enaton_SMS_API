@@ -10,6 +10,7 @@ import {
 } from "sequelize-typescript";
 import { SchoolClass } from "./schoolClass";
 import { FeeStructure } from "./feeStructure";
+import { Student } from "./student";
 
 @Table({
   tableName: "stream",
@@ -48,4 +49,7 @@ export class Stream extends Model {
 
   @HasMany(() => FeeStructure)
   feeStructures!: FeeStructure[];
+
+  @HasMany(() => Student)
+  students!: Student[];
 }

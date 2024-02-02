@@ -9,6 +9,7 @@ import {
 } from "sequelize-typescript";
 import { FeeCategory } from "./feeCategory";
 import { FeeStructure } from "./feeStructure";
+import { Stream } from "./stream";
 
 @Table({
   tableName: "student",
@@ -36,6 +37,15 @@ export class Student extends Model {
 
   @BelongsTo(() => FeeCategory)
   feecategory!: FeeCategory;
+
+  @ForeignKey(() => Stream)
+  @Column({
+    allowNull: false,
+  })
+  streamId!: number;
+
+  @BelongsTo(() => Stream)
+  stream!: Stream;
 
   @HasOne(() => FeeStructure)
   feeStructure!: ReturnType<() => FeeStructure>;
