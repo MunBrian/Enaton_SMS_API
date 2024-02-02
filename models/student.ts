@@ -1,4 +1,5 @@
 import {
+  AfterCreate,
   BelongsTo,
   Column,
   DataType,
@@ -37,4 +38,22 @@ export class Student extends Model {
 
   @BelongsTo(() => Stream)
   stream!: Stream;
+
+  @AfterCreate
+  static increasePopulation(student: Student) {
+    return Stream.findByPk(student.streamId)
+      .then((stream) => {
+        if (stream) {
+          stream.population++;
+          return stream.save();
+        } else {
+          // Handle the case where the stream doesn't exist
+          console.log("Stream doesn't exist");
+        }
+      })
+      .catch((error) => {
+        // Handle errors gracefully
+        console.log(error);
+      });
+  }
 }

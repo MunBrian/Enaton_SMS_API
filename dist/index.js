@@ -39,7 +39,7 @@ app.post("/billStudent", billing_controller_1.default);
 app.use(errorHandler_1.default);
 const start = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield connection_1.default.sync();
+        yield connection_1.default.sync({ alter: true });
         app.listen(8000, () => {
             console.log("Server is running at port 8000.....");
         });

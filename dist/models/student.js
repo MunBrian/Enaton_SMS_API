@@ -14,6 +14,23 @@ const sequelize_typescript_1 = require("sequelize-typescript");
 const feeCategory_1 = require("./feeCategory");
 const stream_1 = require("./stream");
 let Student = class Student extends sequelize_typescript_1.Model {
+    static increasePopulation(student) {
+        return stream_1.Stream.findByPk(student.streamId)
+            .then((stream) => {
+            if (stream) {
+                stream.population++;
+                return stream.save();
+            }
+            else {
+                // Handle the case where the stream doesn't exist
+                console.log("Stream doesn't exist");
+            }
+        })
+            .catch((error) => {
+            // Handle errors gracefully
+            console.log(error);
+        });
+    }
 };
 exports.Student = Student;
 __decorate([
@@ -45,6 +62,12 @@ __decorate([
     (0, sequelize_typescript_1.BelongsTo)(() => stream_1.Stream),
     __metadata("design:type", stream_1.Stream)
 ], Student.prototype, "stream", void 0);
+__decorate([
+    sequelize_typescript_1.AfterCreate,
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Student]),
+    __metadata("design:returntype", void 0)
+], Student, "increasePopulation", null);
 exports.Student = Student = __decorate([
     (0, sequelize_typescript_1.Table)({
         tableName: "student",

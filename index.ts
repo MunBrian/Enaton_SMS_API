@@ -30,7 +30,7 @@ app.use(errorHandler);
 
 const start = async (): Promise<void> => {
   try {
-    await connection.sync();
+    await connection.sync({ alter: true });
     app.listen(8000, () => {
       console.log("Server is running at port 8000.....");
     });
