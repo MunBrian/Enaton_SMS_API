@@ -5,8 +5,6 @@ import {
   DataType,
   ForeignKey,
   BelongsTo,
-  HasMany,
-  HasOne,
 } from "sequelize-typescript";
 
 import { SchoolClass } from "./schoolClass";
