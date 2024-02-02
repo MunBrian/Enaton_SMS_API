@@ -7,14 +7,6 @@ import { FeeStructure } from "./feeStructure";
   timestamps: false,
 })
 export class SchoolClass extends Model {
-  //   @Column({
-  //     type: DataType.UUID,
-  //     defaultValue: DataType.UUIDV4,
-  //     allowNull: false,
-  //     primaryKey: true,
-  //   })
-  //   id!: string;
-
   @Column({
     type: DataType.STRING,
     allowNull: false,

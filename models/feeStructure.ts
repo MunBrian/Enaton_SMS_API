@@ -17,14 +17,6 @@ import { Term } from "./term";
   timestamps: true,
 })
 export class FeeStructure extends Model {
-  //   @Column({
-  //     type: DataType.UUID,
-  //     defaultValue: DataType.UUIDV4,
-  //     primaryKey: true,
-  //     allowNull: false,
-  //   })
-  //   id: any;
-
   @Column({
     type: DataType.FLOAT,
     allowNull: false,

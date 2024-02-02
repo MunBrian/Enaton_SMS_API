@@ -15,14 +15,6 @@ import { Student } from "./student";
   timestamps: false,
 })
 export class Stream extends Model {
-  //   @Column({
-  //     type: DataType.UUID,
-  //     defaultValue: DataType.UUIDV4,
-  //     allowNull: false,
-  //     primaryKey: true,
-  //   })
-  //   id: any;
-
   @Column({
     type: DataType.STRING,
     allowNull: false,

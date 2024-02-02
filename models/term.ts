@@ -6,7 +6,6 @@ import {
   ForeignKey,
   BelongsTo,
   HasMany,
-  HasOne,
 } from "sequelize-typescript";
 import { FinancialYear } from "./financialYear";
 import { FeeStructure } from "./feeStructure";
@@ -16,13 +15,6 @@ import { FeeStructure } from "./feeStructure";
   timestamps: false,
 })
 export class Term extends Model {
-  //   @Column({
-  //     primaryKey: true,
-  //     type: DataType.UUID,
-  //     defaultValue: DataType.UUIDV4,
-  //   })
-  //   id: any;
-
   @Column({
     type: DataType.STRING,
     allowNull: false,

@@ -7,12 +7,6 @@ import { Term } from "./term";
   timestamps: false,
 })
 export class FinancialYear extends Model {
-  //   @Column({
-  //     primaryKey: true,
-  //     type: DataType.UUID,
-  //     defaultValue: DataType.UUIDV4,
-  //   })
-  //   id: any;
   @Column({
     type: DataType.STRING,
     allowNull: false,

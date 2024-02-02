@@ -8,13 +8,6 @@ import { Student } from "./student";
   timestamps: false,
 })
 export class FeeCategory extends Model {
-  //   @Column({
-  //     primaryKey: true,
-  //     type: DataType.UUID,
-  //     defaultValue: DataType.UUIDV4,
-  //   })
-  //   id: any;
-
   @Column({
     type: DataType.STRING,
     allowNull: false,
