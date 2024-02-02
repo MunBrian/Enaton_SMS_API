@@ -11,7 +11,6 @@ import {
 
 import { SchoolClass } from "./schoolClass";
 import { FeeCategory } from "./feeCategory";
-import { Student } from "./student";
 import { VoteHead } from "./voteHead";
 import { Stream } from "./stream";
 import { Term } from "./term";
@@ -52,15 +51,6 @@ export class FeeStructure extends Model {
 
   @BelongsTo(() => FeeCategory)
   feecategory!: FeeCategory;
-
-  @ForeignKey(() => Student)
-  @Column({
-    allowNull: false,
-  })
-  studentId!: number;
-
-  @BelongsTo(() => Student)
-  student!: Student;
 
   @ForeignKey(() => VoteHead)
   @Column({
